@@ -19,8 +19,8 @@
   +-+-+-+
   [Sandbox 3x3] Game created
 
-- ⚠ US2: On the first move, the game will choose a square at random. If the gameboard position has a bomb, the user will see a message saying they stepped on a bomb and the game is over.
-- UAT1:
+- ⚠ US2: The game will choose a square at random. If the gameboard position has a bomb, the user will see a message saying they stepped on a bomb and the game is over.
+- UAT2:
   +-+-+-+
   | | | |
   +-+-+-+
@@ -29,3 +29,14 @@
   | | | |
   +-+-+-+
   [Sandbox 3x3] BOOM! – Game Over.
+
+- ⚠ US3: The game will choose a square at random. If the gameboard position does not have a bomb, the gameboard will indicate the number of bombs around the user with that number in the gameboard slot and a message below the gameboard.
+- UAT3
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  |3| | |
+  +-+-+-+
+  [Sandbox 3x3] 3 bombs around your square.
