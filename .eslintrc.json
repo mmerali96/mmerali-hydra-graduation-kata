@@ -6,9 +6,14 @@
     "es6": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended", "plugin:prettier/recommended", "plugin:node/recommended", "plugin:jest/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:node/recommended", "plugin:jest/recommended"],
   "plugins": ["prettier"],
-  "rules": {}
+  "rules": {},
+  "overrides": [
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    }
+  ]
 }
