@@ -2,4 +2,6 @@ function hello() {
   return 'hello';
 }
 
-module.exports = { hello };
+class MineField {}
+
+module.exports = { hello, MineField };
