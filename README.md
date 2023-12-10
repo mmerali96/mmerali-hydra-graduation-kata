@@ -13,3 +13,64 @@ You don't have to mark all the bombs to win; you just need to open all non-bomb 
 - ⚠ TODO
 - 🚧 IN PROGRESS
 - ✅ DONE
+
+## Examples
+
+### Example 1: Empty gameboard
+
+```text
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  [Sandbox 3x3] Game created
+```
+
+### Example 2: Stepped on bomb
+
+````text
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | |X| |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+[Sandbox 3x3] BOOM! – Game Over.
+```
+
+```text
+  +-+-+-+
+  | |X| |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+[Sandbox 3x3] BOOM! – Game Over.
+````
+
+```text
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  |X| | |
+  +-+-+-+
+[Sandbox 3x3] BOOM! – Game Over.
+```
+
+```text
+  +-+-+-+
+  | | |X|
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  | | | |
+  +-+-+-+
+[Sandbox 3x3] BOOM! – Game Over.
+```
