@@ -14,8 +14,13 @@
 # Pomodoro 2 610pm - 635pm
 
 - ✅ Move backlog from readme.md to backlog.md
-- 🚧 Gather examples from backlog
-- ⚠ refactor backlog based on examples
+- ✅ Gather examples from backlog
+- ✅ refactor backlog based on examples
+
+# Pomodoro 3 640PM - 705PM
+
+- ✅ Represent gameboard in MineField class as a 2d array
+- ⚠ Create a function to print current contents of gameboard
 
 ## Legend
 
