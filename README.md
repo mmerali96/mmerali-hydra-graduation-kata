@@ -19,7 +19,7 @@
   +-+-+-+
   [Sandbox 3x3] Game created
 
-- ⚠ US2: The game will choose a square at random. If the gameboard position has a bomb, the user will see a message saying they stepped on a bomb and the game is over.
+- ⚠ US2: The game will choose a square at random. If the gameboard position has a bomb, the user will see a message saying they stepped on a bomb and the game is over. A bomb that exploded is indicated with a `X`
 - UAT2:
   +-+-+-+
   | | | |
@@ -40,3 +40,14 @@
   |3| | |
   +-+-+-+
   [Sandbox 3x3] 3 bombs around your square.
+
+- ⚠ US4: If the gameboard position does not have a bomb and it is marked with a number, the bot will "mark as bomb" that number of squares at random. A bomb that has not exploded is indicated with a `*`.
+- UAT4:
+  +-+-+-+
+  | | | |
+  +-+-+-+
+  |_|_| |
+  +-+-+-+
+  |3|\*| |
+  +-+-+-+
+  [Sandbox 3x3] Square flagged as bomb.

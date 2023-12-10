@@ -10,4 +10,4 @@
 
 # Pomodoro 1 540pm - 605pm
 
-- 🚧 Create User stories
+- ✅ Create User stories for first 4 UATs
