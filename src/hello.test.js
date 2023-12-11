@@ -39,4 +39,10 @@ describe('MineField game', () => {
       logSpy.mockRestore();
     });
   });
+
+  describe('should hold an internal state of where bombs are on the gameboard', () => {
+    it('should have 2d array bombBoard defined', () => {
+      expect(new MineField().bombBoard).toBeDefined();
+    });
+  });
 });

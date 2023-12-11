@@ -28,6 +28,9 @@
 
 - ✅ US1
   - ✅ Create the startGame function that prints the empty gameboard with the message `[Sandbox 3x3] Game created`
+- 🚧 US2
+  - 🚧 Create internal gameboard that holds a map of where the bombs are
+  - ⚠ Initialize the internal map of bombs randomly when gameStart is called
 
 ## Legend
 

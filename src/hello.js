@@ -5,6 +5,7 @@ function hello() {
 class MineField {
   constructor() {
     this.gameboard = [...Array(3)].map(() => Array(3).fill(' '));
+    this.bombBoard = [];
   }
 
   getGameboard() {
