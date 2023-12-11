@@ -19,9 +19,15 @@
 
 # Pomodoro 3 640PM - 705PM
 
-- ✅ Represent gameboard in MineField class as a 2d array
-- ✅ Create a function to print current contents of gameboard
-- ✅ Create helper function that prints board to console using getGameboard
+- 🚧 US1
+  - ✅ Represent gameboard in MineField class as a 2d array
+  - ✅ Create a function to print current contents of gameboard
+  - ✅ Create helper function that prints board to console using getGameboard
+
+# Pomodoro 4 710PM - 735PM
+
+- ✅ US1
+  - ✅ Create the startGame function that prints the empty gameboard with the message `[Sandbox 3x3] Game created`
 
 ## Legend
 

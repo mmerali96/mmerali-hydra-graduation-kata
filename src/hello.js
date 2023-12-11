@@ -23,6 +23,11 @@ class MineField {
   printGameboard() {
     console.log(this.getGameboard());
   }
+
+  startGame() {
+    this.printGameboard();
+    console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
+  }
 }
 
 module.exports = { hello, MineField };

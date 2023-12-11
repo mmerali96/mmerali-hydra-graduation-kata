@@ -21,5 +21,22 @@ describe('MineField game', () => {
     expect(new MineField().printGameboard).toBeDefined();
     new MineField().printGameboard();
     expect(logSpy).toHaveBeenCalled();
+
+    logSpy.mockRestore();
+  });
+
+  describe('should have a function called startGame', () => {
+    it('should be defined', () => {
+      expect(new MineField().startGame).toBeDefined();
+    });
+
+    it('should print the game board and starting message', () => {
+      const logSpy = jest.spyOn(console, 'log');
+      new MineField().startGame();
+      expect(logSpy).toHaveBeenCalledTimes(2);
+      expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      logSpy.mockRestore();
+    });
   });
 });
