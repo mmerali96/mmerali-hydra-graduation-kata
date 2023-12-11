@@ -21,6 +21,7 @@
 
 - ✅ Represent gameboard in MineField class as a 2d array
 - ✅ Create a function to print current contents of gameboard
+- ✅ Create helper function that prints board to console using getGameboard
 
 ## Legend
 

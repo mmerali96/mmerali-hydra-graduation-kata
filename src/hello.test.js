@@ -16,4 +16,10 @@ describe('MineField game', () => {
   it('should have a function that returns the gameboard as a user readable string', () => {
     expect(new MineField().getGameboard()).toBe('+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
   });
+  it('should have a helper function that prints the gameboard to the console', () => {
+    const logSpy = jest.spyOn(console, 'log');
+    expect(new MineField().printGameboard).toBeDefined();
+    new MineField().printGameboard();
+    expect(logSpy).toHaveBeenCalled();
+  });
 });

@@ -9,20 +9,19 @@ class MineField {
 
   getGameboard() {
     let result = '';
-
     for (const row of this.gameboard) {
       result += '+-+-+-+\n';
-
       for (const col of row) {
         result += '|' + (col || ' ') + '';
       }
-
       result += '|\n';
     }
-
     result += '+-+-+-+';
-
     return result;
+  }
+
+  printGameboard() {
+    console.log(this.getGameboard());
   }
 }
 
