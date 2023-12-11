@@ -44,5 +44,8 @@ describe('MineField game', () => {
     it('should have 2d array bombBoard defined', () => {
       expect(new MineField().bombBoard).toBeDefined();
     });
+    it('should be initialized to a 3x3 array', () => {
+      expect(new MineField().bombBoard).toEqual([...Array(3)].map(() => Array(3).fill(' ')));
+    });
   });
 });
