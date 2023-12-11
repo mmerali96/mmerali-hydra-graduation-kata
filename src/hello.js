@@ -13,7 +13,7 @@ class MineField {
     for (const row of this.gameboard) {
       result += '+-+-+-+\n';
       for (const col of row) {
-        result += '|' + (col || ' ') + '';
+        result += '|' + col;
       }
       result += '|\n';
     }
@@ -29,6 +29,8 @@ class MineField {
     this.printGameboard();
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
   }
+
+  seedBombs() {}
 }
 
 module.exports = { hello, MineField };
