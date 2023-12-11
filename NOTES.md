@@ -20,7 +20,7 @@
 # Pomodoro 3 640PM - 705PM
 
 - ✅ Represent gameboard in MineField class as a 2d array
-- ⚠ Create a function to print current contents of gameboard
+- ✅ Create a function to print current contents of gameboard
 
 ## Legend
 
