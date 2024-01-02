@@ -1,4 +1,4 @@
-const { MineField } = require('./hello');
+const { MineField } = require('./minefield');
 
 describe('MineField game', () => {
   it('should be defined', () => {
