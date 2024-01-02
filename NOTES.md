@@ -32,6 +32,13 @@
   - ✅ Create internal gameboard that holds a map of where the bombs are
   - 🚧 Initialize the internal map of bombs randomly when gameStart is called
 
+# Pomodoro 5: 1/2/2024 1115PM - 1145PM
+
+- 🚧 US2
+  - ✅ Create test for seed bombs which will add 3 bombs to the internal map
+  - ✅ Initialize the internal map of bombs randomly when gameStart is called
+  - 🚧 function startGame will chose a random position to start
+
 ## Legend
 
 - ⚠ TODO

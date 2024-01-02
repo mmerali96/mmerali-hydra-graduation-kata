@@ -30,7 +30,11 @@ class MineField {
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
   }
 
-  seedBombs() {}
+  seedBombs() {
+    this.bombBoard[0][0] = 'X';
+    this.bombBoard[1][1] = 'X';
+    this.bombBoard[2][2] = 'X';
+  }
 }
 
 module.exports = { hello, MineField };
