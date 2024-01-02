@@ -26,6 +26,7 @@ class MineField {
   }
 
   startGame() {
+    this.seedBombs();
     this.printGameboard();
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
   }
