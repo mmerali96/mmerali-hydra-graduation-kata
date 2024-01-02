@@ -1,10 +1,4 @@
-const { hello, MineField } = require('./hello');
-
-describe('hello', () => {
-  it('should return hello', () => {
-    expect(hello()).toBe('hello');
-  });
-});
+const { MineField } = require('./hello');
 
 describe('MineField game', () => {
   it('should be defined', () => {

@@ -45,6 +45,7 @@
 - 🚧 US2
   - ✅ Create a test for generating random starting location
   - ✅ Create a function for generating random starting location
+  - ✅ TD1: Remove boilerplate code
   - ⚠ Call getStartingLocation in game driver
 
 ## Legend

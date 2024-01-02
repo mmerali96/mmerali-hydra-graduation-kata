@@ -1,7 +1,3 @@
-function hello() {
-  return 'hello';
-}
-
 class MineField {
   constructor() {
     this.gameboard = [...Array(3)].map(() => Array(3).fill(' '));
@@ -44,4 +40,4 @@ class MineField {
   }
 }
 
-module.exports = { hello, MineField };
+module.exports = { MineField };
