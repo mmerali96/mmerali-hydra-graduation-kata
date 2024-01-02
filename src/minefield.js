@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 class MineField {
   constructor() {
     this.gameboard = [...Array(3)].map(() => Array(3).fill(' '));
@@ -18,8 +20,8 @@ class MineField {
   }
 
   getStartingLocation() {
-    const randomRowIndex = Math.floor(Math.random() * this.gameboard.length);
-    const randomColIndex = Math.floor(Math.random() * this.gameboard[0].length);
+    const randomRowIndex = Math.floor(crypto.randomBytes(1) * this.gameboard.length);
+    const randomColIndex = Math.floor(crypto.randomBytes(1) * this.gameboard[0].length);
     return [randomRowIndex, randomColIndex];
   }
 

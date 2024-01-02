@@ -54,7 +54,9 @@
 
 - 🚧 US2
   - ✅ Create a function that accepts a index and handles moving on that board spaced
-  - 🚧 handleStepOnSquare should return true if the space is a bomb and false otherwise
+  - ✅ handleStepOnSquare should return true if the space is a bomb and false otherwise
+  - ✅ fix security hotspot from sonarqube on math.random
+  - ⚠ handleStepOnSquare should mark the current square with the number of bombs around it
 
 ## Legend
 

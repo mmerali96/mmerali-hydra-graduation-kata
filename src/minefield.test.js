@@ -1,4 +1,5 @@
 const { MineField } = require('./minefield');
+const crypto = require('crypto');
 
 describe('MineField game', () => {
   it('should be defined', () => {
@@ -29,7 +30,7 @@ describe('MineField game', () => {
     });
 
     it('should use the random function to generate the starting position', () => {
-      const mockMathRandom = jest.spyOn(Math, 'random');
+      const mockMathRandom = jest.spyOn(crypto, 'randomBytes');
       new MineField().getStartingLocation();
       expect(mockMathRandom).toHaveBeenCalled();
       mockMathRandom.mockRestore();
