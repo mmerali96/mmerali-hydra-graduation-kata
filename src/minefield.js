@@ -49,7 +49,31 @@ class MineField {
     this.bombBoard[2][2] = '*';
   }
 
-  calculateNeighboringBombs() {}
+  calculateNeighboringBombs(rowIndex, colIndex) {
+    let bombCount = 0;
+    const postionOffset = [
+      [1, 0], // up
+      [1, 1], // up-right
+      [0, 1], // right
+      [-1, 1], // down-right
+      [-1, 0], // down
+      [-1, -1], // down-left
+      [0, -1], //left
+      [1, -1], // up-left
+    ];
+
+    for (const offset of postionOffset) {
+      const neighborRowIndex = rowIndex + offset[0];
+      const neighborColIndex = colIndex + offset[1];
+      if (neighborRowIndex >= 0 && neighborRowIndex < this.gameboard.length && neighborColIndex >= 0 && neighborColIndex < this.gameboard[0].length) {
+        if (this.bombBoard[neighborRowIndex][neighborColIndex] === '*') {
+          bombCount += 1;
+        }
+      }
+    }
+
+    return bombCount;
+  }
 }
 
 module.exports = { MineField };

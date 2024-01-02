@@ -92,5 +92,12 @@ describe('MineField game', () => {
     it('should be defined', () => {
       expect(new MineField().calculateNeighboringBombs).toBeDefined();
     });
+
+    it('should return the number of bombs around a sqaure', () => {
+      const minefield = new MineField();
+      minefield.seedBombs();
+      expect(minefield.calculateNeighboringBombs(0, 1)).toBe(2);
+      expect(minefield.calculateNeighboringBombs(0, 2)).toBe(1);
+    });
   });
 });
