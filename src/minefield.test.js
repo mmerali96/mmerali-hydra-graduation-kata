@@ -82,10 +82,17 @@ describe('MineField game', () => {
     it('should have function seedBombs that adds bombs to the bomb board', () => {
       expect(new MineField().seedBombs).toBeDefined();
     });
+
     it('should randomly define squares with bombs in internal map', () => {
       let field = new MineField();
       field.seedBombs();
       expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(3);
+    });
+
+    it('should take 9 char string "* **     " and populate the gameboard accordingly', () => {
+      let field = new MineField();
+      field.seedBombs('* **   * ');
+      expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(4);
     });
   });
 

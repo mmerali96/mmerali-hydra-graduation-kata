@@ -45,10 +45,13 @@ class MineField {
     return this.gameboard[rowIndex][colIndex] === 'X';
   }
 
-  seedBombs() {
-    this.bombBoard[0][0] = '*';
-    this.bombBoard[1][1] = '*';
-    this.bombBoard[2][2] = '*';
+  seedBombs(seedString = '*   *   *') {
+    const seedArray = seedString.split('');
+    for (let i = 0; i < this.bombBoard.length; i++) {
+      for (let j = 0; j < this.bombBoard[0].length; j++) {
+        this.bombBoard[i][j] = seedArray[i * 3 + j];
+      }
+    }
   }
 
   calculateNeighboringBombs(rowIndex, colIndex) {

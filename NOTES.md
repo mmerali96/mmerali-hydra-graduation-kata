@@ -65,12 +65,13 @@
 
 # Pomodoro 8: 1/2/2024 1245PM - 110PM
 
-- 🚧 US2
+- ✅ US2
   - ✅ calculateNeighboringBombs function should look at all the neighbors of a square and return the number that are bombs
     - ✅ calculateNeighboringBombs should take in 2 indices
     - ✅ define directions that is a list offsets that can be added to indices to represent moving up, down, and diagonal
     - ✅ calculateNeighboringBombs should return the number of bombs around a square
-  - ⚠ handleStepOnSquare should mark the current square with the number of bombs around it if square is a clean square
+  - ✅ handleStepOnSquare should mark the current square with the number of bombs around it if square is a clean square
+  - ✅ TD5: Seed Bombs is hardcoded. Refactor it to be random but also take in a seed value to get a deterministic gameboard
 
 ## Legend
 

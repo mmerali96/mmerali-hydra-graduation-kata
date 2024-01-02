@@ -11,7 +11,7 @@
   +-+-+-+
   [Sandbox 3x3] Game created
 
-- 🚧 US2: The game will choose a square at random to start. If the gameboard position has a bomb, the user will see a message saying they stepped on a bomb and the game is over. A bomb that exploded is indicated with a `X`
+- ✅ US2: The game will choose a square at random to start. If the gameboard position has a bomb, the user will see a message saying they stepped on a bomb and the game is over. A bomb that exploded is indicated with a `X`
 - UAT2:
 
 ````text
