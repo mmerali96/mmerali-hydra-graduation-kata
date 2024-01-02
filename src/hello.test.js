@@ -25,6 +25,16 @@ describe('MineField game', () => {
     logSpy.mockRestore();
   });
 
+  describe('function getStartingLocation', () => {
+    it('should be defined', () => {
+      expect(new MineField().getStartingLocation).toBeDefined();
+    });
+
+    it('should return the starting position as an array of 2 indices', () => {
+      expect(new MineField().getStartingLocation()).toEqual([0, 0]);
+    });
+  });
+
   describe('should have a function called startGame', () => {
     it('should be defined', () => {
       expect(new MineField().startGame).toBeDefined();

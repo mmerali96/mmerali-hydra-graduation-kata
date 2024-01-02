@@ -21,6 +21,10 @@ class MineField {
     return result;
   }
 
+  getStartingLocation() {
+    return [0, 0];
+  }
+
   printGameboard() {
     console.log(this.getGameboard());
   }
