@@ -33,6 +33,10 @@ class MineField {
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
   }
 
+  handleStepOnSquare(rowIndex, colIndex) {
+    this.gameboard[rowIndex][colIndex] = this.bombBoard[rowIndex][colIndex];
+  }
+
   seedBombs() {
     this.bombBoard[0][0] = 'X';
     this.bombBoard[1][1] = 'X';

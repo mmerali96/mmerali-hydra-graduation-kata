@@ -36,6 +36,19 @@ describe('MineField game', () => {
     });
   });
 
+  describe('function handleStepOnSquare', () => {
+    it('should be defined', () => {
+      expect(new MineField().handleStepOnSquare).toBeDefined();
+    });
+
+    it('should mark square as visible on the gameboard', () => {
+      const minefield = new MineField();
+      minefield.seedBombs();
+      minefield.handleStepOnSquare(0, 0);
+      expect(minefield.gameboard[0][0]).toBe('X');
+    });
+  });
+
   describe('should have a function called startGame', () => {
     it('should be defined', () => {
       expect(new MineField().startGame).toBeDefined();
