@@ -87,4 +87,10 @@ describe('MineField game', () => {
       expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(3);
     });
   });
+
+  describe('function calculateNeighboringBombs', () => {
+    it('should be defined', () => {
+      expect(new MineField().calculateNeighboringBombs).toBeDefined();
+    });
+  });
 });

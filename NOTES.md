@@ -55,8 +55,13 @@
 - 🚧 US2
   - ✅ Create a function that accepts a index and handles moving on that board spaced
   - ✅ handleStepOnSquare should return true if the space is a bomb and false otherwise
-  - ✅ fix security hotspot from sonarqube on math.random
+  - 🚧 calculateNeighboringBombs function should look at all the neighbors of a square and return the number that are bombs
+    - ✅ define calculateNeighboringBombs
+    - ⚠ calculateNeighboringBombs should take in 2 indices
+    - ⚠ define directions that is a list offsets that can be added to indices to represent moving up, down, and diagonal
+    - ⚠ calculateNeighboringBombs should return the number of bombs around a square
   - ⚠ handleStepOnSquare should mark the current square with the number of bombs around it
+- ✅ SONAR: fix security hotspot from sonarqube on math.random
 
 ## Legend
 

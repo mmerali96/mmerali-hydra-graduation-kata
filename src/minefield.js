@@ -48,6 +48,8 @@ class MineField {
     this.bombBoard[1][1] = '*';
     this.bombBoard[2][2] = '*';
   }
+
+  calculateNeighboringBombs() {}
 }
 
 module.exports = { MineField };
