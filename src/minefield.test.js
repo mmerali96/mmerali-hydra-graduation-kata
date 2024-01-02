@@ -41,11 +41,16 @@ describe('MineField game', () => {
       expect(new MineField().handleStepOnSquare).toBeDefined();
     });
 
-    it('should mark square as visible on the gameboard', () => {
+    it('when on a square with a bomb, should mark the gameboard with an "X" and return true', () => {
       const minefield = new MineField();
       minefield.seedBombs();
-      minefield.handleStepOnSquare(0, 0);
+      expect(minefield.handleStepOnSquare(0, 0)).toBe(true);
       expect(minefield.gameboard[0][0]).toBe('X');
+    });
+    it('when on a clean square, should return false and mark the square with the number of bombs around it', () => {
+      const minefield = new MineField();
+      minefield.seedBombs();
+      expect(minefield.handleStepOnSquare(1, 0)).toBe(false);
     });
   });
 
@@ -78,7 +83,7 @@ describe('MineField game', () => {
     it('should randomly define squares with bombs in internal map', () => {
       let field = new MineField();
       field.seedBombs();
-      expect(field.bombBoard.flat().filter((item) => item === 'X').length).toBe(3);
+      expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(3);
     });
   });
 });

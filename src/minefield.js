@@ -34,13 +34,17 @@ class MineField {
   }
 
   handleStepOnSquare(rowIndex, colIndex) {
-    this.gameboard[rowIndex][colIndex] = this.bombBoard[rowIndex][colIndex];
+    if (this.bombBoard[rowIndex][colIndex] === '*') {
+      this.gameboard[rowIndex][colIndex] = 'X';
+    }
+
+    return this.gameboard[rowIndex][colIndex] === 'X';
   }
 
   seedBombs() {
-    this.bombBoard[0][0] = 'X';
-    this.bombBoard[1][1] = 'X';
-    this.bombBoard[2][2] = 'X';
+    this.bombBoard[0][0] = '*';
+    this.bombBoard[1][1] = '*';
+    this.bombBoard[2][2] = '*';
   }
 }
 

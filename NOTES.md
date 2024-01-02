@@ -46,7 +46,15 @@
   - ✅ Create a test for generating random starting location
   - ✅ Create a function for generating random starting location
   - ✅ TD1: Remove boilerplate code
-  - ⚠ Call getStartingLocation in game driver
+  - ✅ Call getStartingLocation in game driver
+  - ✅ Create a test for function handleStepOnSquare
+  - ⚠ Create a function that accepts a index and handles moving on that board spaced
+
+# Pomodoro 6: 1/2/2024 1215PM - 1245PM
+
+- 🚧 US2
+  - ✅ Create a function that accepts a index and handles moving on that board spaced
+  - 🚧 handleStepOnSquare should return true if the space is a bomb and false otherwise
 
 ## Legend
 
