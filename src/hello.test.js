@@ -31,7 +31,14 @@ describe('MineField game', () => {
     });
 
     it('should return the starting position as an array of 2 indices', () => {
-      expect(new MineField().getStartingLocation()).toEqual([0, 0]);
+      expect(new MineField().getStartingLocation()).toEqual(expect.arrayContaining([expect.any(Number), expect.any(Number)]));
+    });
+
+    it('should use the random function to generate the starting position', () => {
+      const mockMathRandom = jest.spyOn(Math, 'random');
+      new MineField().getStartingLocation();
+      expect(mockMathRandom).toHaveBeenCalled();
+      mockMathRandom.mockRestore();
     });
   });
 

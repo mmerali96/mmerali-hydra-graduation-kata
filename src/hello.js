@@ -22,7 +22,9 @@ class MineField {
   }
 
   getStartingLocation() {
-    return [0, 0];
+    const randomRowIndex = Math.floor(Math.random() * this.gameboard.length);
+    const randomColIndex = Math.floor(Math.random() * this.gameboard[0].length);
+    return [randomRowIndex, randomColIndex];
   }
 
   printGameboard() {
