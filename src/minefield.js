@@ -38,6 +38,8 @@ class MineField {
   handleStepOnSquare(rowIndex, colIndex) {
     if (this.bombBoard[rowIndex][colIndex] === '*') {
       this.gameboard[rowIndex][colIndex] = 'X';
+    } else {
+      this.gameboard[rowIndex][colIndex] = '' + this.calculateNeighboringBombs(rowIndex, colIndex);
     }
 
     return this.gameboard[rowIndex][colIndex] === 'X';

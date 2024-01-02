@@ -52,6 +52,7 @@ describe('MineField game', () => {
       const minefield = new MineField();
       minefield.seedBombs();
       expect(minefield.handleStepOnSquare(1, 0)).toBe(false);
+      expect(minefield.gameboard[1][0]).toBe('2');
     });
   });
 
