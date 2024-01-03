@@ -76,7 +76,7 @@ describe('MineField game', () => {
       const minefield = new MineField();
       minefield.startGame('         ');
 
-      expect(logSpy).toHaveBeenCalledTimes(2);
+      expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
       expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
       logSpy.mockRestore();
@@ -92,6 +92,20 @@ describe('MineField game', () => {
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
       expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
       expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] BOOM! - Game Over.');
+
+      logSpy.mockRestore();
+    });
+
+    it('should print gameboard with number of neighboring bombs when bot selects clean square', () => {
+      const logSpy = jest.spyOn(console, 'log');
+      const minefield = new MineField();
+
+      minefield.startGame('         ');
+
+      expect(logSpy).toHaveBeenCalledTimes(4);
+      expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] 0 bombs around your square.');
 
       logSpy.mockRestore();
     });

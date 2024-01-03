@@ -48,7 +48,10 @@ class MineField {
       console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] BOOM! - Game Over.`);
       return false;
     } else {
-      this.gameboard[rowIndex][colIndex] = '' + this.calculateNeighboringBombs(rowIndex, colIndex);
+      const neighborBombCount = this.calculateNeighboringBombs(rowIndex, colIndex);
+      this.gameboard[rowIndex][colIndex] = '' + neighborBombCount;
+      this.printGameboard();
+      console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] ${neighborBombCount} bombs around your square.`);
       return true;
     }
   }
