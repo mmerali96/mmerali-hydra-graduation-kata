@@ -42,16 +42,16 @@ describe('MineField game', () => {
       expect(new MineField().handleStepOnSquare).toBeDefined();
     });
 
-    it('when on a square with a bomb, should mark the gameboard with an "X" and return true', () => {
+    it('when on a square with a bomb, should mark the gameboard with an "X" and return false', () => {
       const minefield = new MineField();
       minefield.seedBombs();
-      expect(minefield.handleStepOnSquare(0, 0)).toBe(true);
+      expect(minefield.handleStepOnSquare(0, 0)).toBe(false);
       expect(minefield.gameboard[0][0]).toBe('X');
     });
-    it('when on a clean square, should return false and mark the square with the number of bombs around it', () => {
+    it('when on a clean square, should return true and mark the square with the number of bombs around it', () => {
       const minefield = new MineField();
       minefield.seedBombs();
-      expect(minefield.handleStepOnSquare(1, 0)).toBe(false);
+      expect(minefield.handleStepOnSquare(1, 0)).toBe(true);
       expect(minefield.gameboard[1][0]).toBe('2');
     });
   });
@@ -61,12 +61,38 @@ describe('MineField game', () => {
       expect(new MineField().startGame).toBeDefined();
     });
 
+    it('should use the default seed to populate the bombboard if the seed is not provided', () => {
+      const minefield = new MineField();
+      minefield.startGame();
+      expect(minefield.bombBoard).toEqual([
+        ['*', ' ', ' '],
+        [' ', '*', ' '],
+        [' ', ' ', '*'],
+      ]);
+    });
+
     it('should print the game board and starting message', () => {
       const logSpy = jest.spyOn(console, 'log');
-      new MineField().startGame();
+      const minefield = new MineField();
+      minefield.startGame('         ');
+
       expect(logSpy).toHaveBeenCalledTimes(2);
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
       expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      logSpy.mockRestore();
+    });
+
+    it('On game start, bot will select a bomb square and the game will output "BOOM! - Game Over."', () => {
+      const logSpy = jest.spyOn(console, 'log');
+      const minefield = new MineField();
+
+      minefield.startGame('*********');
+
+      expect(logSpy).toHaveBeenCalledTimes(4);
+      expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] BOOM! - Game Over.');
+
       logSpy.mockRestore();
     });
   });

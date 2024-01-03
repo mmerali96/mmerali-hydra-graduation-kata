@@ -20,8 +20,8 @@ class MineField {
   }
 
   getStartingLocation() {
-    const randomRowIndex = Math.floor(crypto.randomBytes(1) * this.gameboard.length);
-    const randomColIndex = Math.floor(crypto.randomBytes(1) * this.gameboard[0].length);
+    const randomRowIndex = Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * this.gameboard.length);
+    const randomColIndex = Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * this.gameboard[0].length);
     return [randomRowIndex, randomColIndex];
   }
 
@@ -29,20 +29,30 @@ class MineField {
     console.log(this.getGameboard());
   }
 
-  startGame() {
-    this.seedBombs();
+  startGame(seed = '*   *   *') {
+    this.seedBombs(seed);
     this.printGameboard();
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
+    const startPosition = this.getStartingLocation();
+    let playGame = true;
+    while (playGame) {
+      playGame = this.handleStepOnSquare(startPosition[0], startPosition[1]);
+      break;
+    }
   }
 
   handleStepOnSquare(rowIndex, colIndex) {
+    let continueGame = true;
     if (this.bombBoard[rowIndex][colIndex] === '*') {
       this.gameboard[rowIndex][colIndex] = 'X';
+      this.printGameboard();
+      console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] BOOM! - Game Over.`);
+      continueGame = false;
     } else {
       this.gameboard[rowIndex][colIndex] = '' + this.calculateNeighboringBombs(rowIndex, colIndex);
+      continueGame = true;
     }
-
-    return this.gameboard[rowIndex][colIndex] === 'X';
+    return continueGame;
   }
 
   seedBombs(seedString = '*   *   *') {
