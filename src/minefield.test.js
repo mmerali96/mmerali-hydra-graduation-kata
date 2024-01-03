@@ -127,11 +127,15 @@ describe('MineField game', () => {
       expect(new MineField().calculateNeighboringBombs).toBeDefined();
     });
 
-    it('should return the number of bombs around a sqaure', () => {
+    it('should return the number of bombs around a square', () => {
       const minefield = new MineField();
       minefield.seedBombs();
       expect(minefield.calculateNeighboringBombs(0, 1)).toBe(2);
       expect(minefield.calculateNeighboringBombs(0, 2)).toBe(1);
+      expect(minefield.calculateNeighboringBombs(1, 0)).toBe(2);
+      expect(minefield.calculateNeighboringBombs(1, 3)).toBe(1);
+      expect(minefield.calculateNeighboringBombs(2, 0)).toBe(1);
+      expect(minefield.calculateNeighboringBombs(2, 1)).toBe(2);
     });
   });
 });

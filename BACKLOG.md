@@ -58,7 +58,7 @@
 [Sandbox 3x3] BOOM! – Game Over.
 ```
 
-- ⚠ US3: The game will choose a square at random to start. If the gameboard position does not have a bomb, the gameboard will indicate the number of bombs around the user with that number in the gameboard slot and a message below the gameboard.
+- ✅ US3: The game will choose a square at random to start. If the gameboard position does not have a bomb, the gameboard will indicate the number of bombs around the user with that number in the gameboard slot and a message below the gameboard.
 - UAT3
   +-+-+-+
   | | | |

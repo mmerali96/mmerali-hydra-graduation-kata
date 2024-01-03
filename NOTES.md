@@ -81,10 +81,14 @@
 
 # Pomodoro 10: 1/3/2023 415PM - 440PM
 
-- ⚠ Resolve failing test for printing gameboard starting message
+- ✅ Resolve failing test for printing gameboard starting message
 - ⚠ US3
   - ⚠ Create test to check that square gets marked with appropriate number of squares.
-  -
+
+# Pomodoro 11: 1/3/2023 445PM - 510PM
+
+- ✅ US3
+  - ✅ Create test to check that square gets marked with appropriate number of squares.
 
 ## Legend
 
