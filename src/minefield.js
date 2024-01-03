@@ -42,17 +42,15 @@ class MineField {
   }
 
   handleStepOnSquare(rowIndex, colIndex) {
-    let continueGame = true;
     if (this.bombBoard[rowIndex][colIndex] === '*') {
       this.gameboard[rowIndex][colIndex] = 'X';
       this.printGameboard();
       console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] BOOM! - Game Over.`);
-      continueGame = false;
+      return false;
     } else {
       this.gameboard[rowIndex][colIndex] = '' + this.calculateNeighboringBombs(rowIndex, colIndex);
-      continueGame = true;
+      return true;
     }
-    return continueGame;
   }
 
   seedBombs(seedString = '*   *   *') {

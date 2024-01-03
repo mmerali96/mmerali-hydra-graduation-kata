@@ -89,6 +89,7 @@
 
 - ✅ US3
   - ✅ Create test to check that square gets marked with appropriate number of squares.
+- ✅ Resolve code smell https://sonarcloud.io/project/issues?open=AYzRSwPh3Wisr06qlbg7&id=mmerali96_mmerali-hydra-graduation-kata
 
 ## Legend
 
