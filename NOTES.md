@@ -97,7 +97,7 @@
 
 # Pomodoro 12: 1/4/2023 255PM - 320PM
 
-- 🚧 TD6: Refactor prefix for '3x3' message to be dry
+- ✅ TD6: Refactor prefix for '3x3' message to be dry
 - ⚠ US4
   - ⚠ Mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*
 

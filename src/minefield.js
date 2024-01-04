@@ -32,7 +32,7 @@ class MineField {
   startGame(seed = '*   *   *') {
     this.seedBombs(seed);
     this.printGameboard();
-    console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] Game created`);
+    this.printMessage(`Game created`);
     const startPosition = this.getStartingLocation();
     let playGame = true;
     while (playGame) {
@@ -45,13 +45,13 @@ class MineField {
     if (this.bombBoard[rowIndex][colIndex] === '*') {
       this.gameboard[rowIndex][colIndex] = 'X';
       this.printGameboard();
-      console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] BOOM! - Game Over.`);
+      this.printMessage(`BOOM! - Game Over`);
       return false;
     } else {
       const neighborBombCount = this.calculateNeighboringBombs(rowIndex, colIndex);
       this.gameboard[rowIndex][colIndex] = '' + neighborBombCount;
       this.printGameboard();
-      console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] ${neighborBombCount} bombs around your square.`);
+      this.printMessage(`${neighborBombCount} bombs around your square`);
       return true;
     }
   }

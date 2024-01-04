@@ -78,7 +78,7 @@ describe('MineField game', () => {
 
       expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created.');
       logSpy.mockRestore();
     });
 
@@ -90,7 +90,7 @@ describe('MineField game', () => {
 
       expect(logSpy).toHaveBeenCalledTimes(4);
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created.');
       expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] BOOM! - Game Over.');
 
       logSpy.mockRestore();
@@ -104,7 +104,7 @@ describe('MineField game', () => {
 
       expect(logSpy).toHaveBeenCalledTimes(4);
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created.');
       expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] 0 bombs around your square.');
 
       logSpy.mockRestore();
@@ -160,11 +160,10 @@ describe('MineField game', () => {
 
     it('should prefix messages with the gameboard size', () => {
       const logSpy = jest.spyOn(console, 'log');
-      const minefield = new MineField();
-      minefield.printMessage('game started');
+      new MineField().startGame();
 
-      expect(logSpy).toHaveBeenCalledTimes(1);
-      expect(logSpy).toHaveBeenNthCalledWith(1, '[Sandbox 3x3] game started.');
+      expect(logSpy).toHaveBeenCalled();
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created.');
       logSpy.mockRestore();
     });
   });
