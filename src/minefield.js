@@ -86,10 +86,8 @@ class MineField {
     for (const offset of POSITION_OFFSET_LIST) {
       const neighborRowIndex = rowIndex + offset[0];
       const neighborColIndex = colIndex + offset[1];
-      if (this.isValidIndex(neighborRowIndex, neighborColIndex)) {
-        if (this.bombBoard[neighborRowIndex][neighborColIndex] === '*') {
-          bombCount += 1;
-        }
+      if (this.isValidIndex(neighborRowIndex, neighborColIndex) && this.bombBoard[neighborRowIndex][neighborColIndex] === '*') {
+        bombCount += 1;
       }
     }
 
@@ -109,32 +107,15 @@ class MineField {
   }
 
   getListOfNeighboringSquares(rowIndex, colIndex) {
-    if (rowIndex === 0 && colIndex === 0) {
-      return [
-        [0, 1],
-        [1, 1],
-        [1, 0],
-      ];
-    } else if (rowIndex === 1 && colIndex === 1) {
-      return [
-        [0, 0],
-        [0, 1],
-        [0, 2],
-        [1, 0],
-        [1, 2],
-        [2, 0],
-        [2, 1],
-        [2, 2],
-      ];
-    } else {
-      return [
-        [0, 0],
-        [1, 0],
-        [1, 1],
-        [1, 2],
-        [0, 2],
-      ];
+    let neighborList = [];
+    for (const offset of POSITION_OFFSET_LIST) {
+      const neighborRowIndex = rowIndex + offset[0];
+      const neighborColIndex = colIndex + offset[1];
+      if (this.isValidIndex(neighborRowIndex, neighborColIndex) && this.gameboard[neighborRowIndex][neighborColIndex] === ' ') {
+        neighborList.push([neighborRowIndex, neighborColIndex]);
+      }
     }
+    return neighborList;
   }
 }
 

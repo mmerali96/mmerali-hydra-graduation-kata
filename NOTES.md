@@ -112,8 +112,17 @@
   - ✅ Create a function to mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*. Call the function clearBombs
   - ✅ TD4: Refactor postionOffset in calculateNeighboringBombs to be a global constant
   - ✅ Create function get neighbors that gets the indices of valid adjacent squares
-  - 🚧 fix complexity of calculateNeighboringBombs
-  - ⚠ fix complexity of getListOfNeighboringSquares by refactoring it
+  - ✅ fix complexity of calculateNeighboringBombs
+  - 🚧 fix complexity of getListOfNeighboringSquares by refactoring it
+  - ⚠ Mark adjacent squares as cleared
+  - ⚠ Calculate the neighboring squares bombs
+  - ⚠ create function checkBoardIsDiscovered which should signal that the game can be ended
+  - ⚠ After clearing all the bombs, find the next position to select
+
+# Pomodoro 12: 1/4/2023 355PM - 420PM
+
+- 🚧 US4
+  - ✅ fix complexity of getListOfNeighboringSquares by refactoring it
   - ⚠ Mark adjacent squares as cleared
   - ⚠ Calculate the neighboring squares bombs
   - ⚠ create function checkBoardIsDiscovered which should signal that the game can be ended
