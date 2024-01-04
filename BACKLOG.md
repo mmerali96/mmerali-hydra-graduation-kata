@@ -69,7 +69,7 @@
   +-+-+-+
   [Sandbox 3x3] 3 bombs around your square.
 
-- ⚠ US4: If the gameboard position does not have a bomb and it is marked with a number, the bot will adjacent slots with "mark as bomb" that number of squares at random. A bomb that has not exploded is indicated with a `*`.
+- 🚧 US4: If the gameboard position does not have a bomb and it is marked with a number, the bot will adjacent slots with "mark as bomb" that number of squares at random. A bomb that has not exploded is indicated with a `*`.
 - UAT4:
   +-+-+-+
   | | | |

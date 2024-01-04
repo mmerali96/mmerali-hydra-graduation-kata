@@ -110,7 +110,7 @@
 
 - 🚧 US4
   - ✅ Create a function to mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*. Call the function clearBombs
-  - ⚠ Get the positions of valid adjacent squares
+  - 🚧 Create function get neighbors that gets the indices of valid adjacent squares
   - ⚠ Mark adjacent squares as cleared
   - ⚠ Calculate the neighboring squares bombs
   - ⚠ create function checkBoardIsDiscovered which should signal that the game can be ended

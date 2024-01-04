@@ -91,7 +91,7 @@ class MineField {
     return bombCount;
   }
 
-  clearBombs(rowIndex, colIndex) {
+  clearSquare(rowIndex, colIndex) {
     if (this.bombBoard[rowIndex][colIndex] === '*') {
       this.gameboard[rowIndex][colIndex] = '*';
     } else {
@@ -101,6 +101,14 @@ class MineField {
 
   printMessage(message) {
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] ${message}.`);
+  }
+
+  getListOfNeighboringSquares() {
+    return [
+      [0, 1],
+      [1, 1],
+      [1, 0],
+    ];
   }
 }
 
