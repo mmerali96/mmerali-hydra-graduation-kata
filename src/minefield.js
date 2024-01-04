@@ -44,10 +44,14 @@ class MineField {
     this.seedBombs(seed);
     this.printGameboard();
     this.printMessage(`Game created`);
-    const startPosition = this.getStartingLocation();
+    const currentPosition = this.getStartingLocation();
     let playGame = true;
     while (playGame) {
-      playGame = this.handleStepOnSquare(startPosition[0], startPosition[1]);
+      playGame = this.handleStepOnSquare(currentPosition[0], currentPosition[1]);
+      const neighborIndexList = this.getListOfNeighboringSquares(currentPosition[0], currentPosition[1]);
+      for (const index of neighborIndexList) {
+        this.clearSquare(index[0], index[1]);
+      }
       break;
     }
   }
@@ -116,6 +120,10 @@ class MineField {
       }
     }
     return neighborList;
+  }
+
+  checkIfBoardIsDiscovered() {
+    return this.gameboard.flat().filter((square) => square === ' ').length === 0;
   }
 }
 

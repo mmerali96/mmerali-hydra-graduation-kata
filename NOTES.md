@@ -123,10 +123,10 @@
 
 - 🚧 US4
   - ✅ fix complexity of getListOfNeighboringSquares by refactoring it
-  - ⚠ Mark adjacent squares as cleared
-  - ⚠ Calculate the neighboring squares bombs
-  - ⚠ create function checkBoardIsDiscovered which should signal that the game can be ended
+  - ✅ Mark adjacent squares as cleared in game driver
+  - ✅ create function checkBoardIsDiscovered which should signal that the game can be ended
   - ⚠ After clearing all the bombs, find the next position to select
+  - clearSquare function should print a message saying Square flagged as bomb after clearing it
 
 ## Legend
 

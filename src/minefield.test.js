@@ -272,4 +272,30 @@ describe('MineField game', () => {
       );
     });
   });
+
+  describe('checkBoardIsDiscovered', () => {
+    it('should be defined', () => {
+      expect(new MineField().checkIfBoardIsDiscovered).toBeDefined();
+    });
+
+    it('should return false if there are still undiscovered squares on the gameboard', () => {
+      const minefield = new MineField();
+      minefield.gameboard = [
+        [' ', '2', ' '],
+        ['_', '_', '_'],
+        ['_', '_', '_'],
+      ];
+      expect(minefield.checkIfBoardIsDiscovered()).toBe(false);
+    });
+
+    it('should return true if there are no undiscovered squares on the gameboard', () => {
+      const minefield = new MineField();
+      minefield.gameboard = [
+        ['*', '2', '*'],
+        ['_', '_', '_'],
+        ['_', '_', '_'],
+      ];
+      expect(minefield.checkIfBoardIsDiscovered()).toBe(true);
+    });
+  });
 });
