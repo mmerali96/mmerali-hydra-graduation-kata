@@ -90,6 +90,10 @@ class MineField {
 
     return bombCount;
   }
+
+  printMessage(message) {
+    console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] ${message}.`);
+  }
 }
 
 module.exports = { MineField };

@@ -152,4 +152,20 @@ describe('MineField game', () => {
       expect(minefield.calculateNeighboringBombs(2, 1)).toBe(2);
     });
   });
+
+  describe('function printMessage', () => {
+    it('should be defined', () => {
+      expect(new MineField().printMessage).toBeDefined();
+    });
+
+    it('should prefix messages with the gameboard size', () => {
+      const logSpy = jest.spyOn(console, 'log');
+      const minefield = new MineField();
+      minefield.printMessage('game started');
+
+      expect(logSpy).toHaveBeenCalledTimes(1);
+      expect(logSpy).toHaveBeenNthCalledWith(1, '[Sandbox 3x3] game started.');
+      logSpy.mockRestore();
+    });
+  });
 });

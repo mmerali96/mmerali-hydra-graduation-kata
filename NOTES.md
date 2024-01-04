@@ -91,11 +91,18 @@
   - ✅ Create test to check that square gets marked with appropriate number of squares.
   - ✅ when bot steps on a clean square, show number of bombs around a square on gameboard and message
 - ✅ Resolve code smell https://sonarcloud.io/project/issues?open=AYzRSwPh3Wisr06qlbg7&id=mmerali96_mmerali-hydra-graduation-kata
+- 🚧 TD6: Refactor prefix for '3x3' message to be dry
+- ⚠ US4
+  - ⚠ Mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*
+
+# Pomodoro 12: 1/4/2023 255PM - 320PM
+
+- 🚧 TD6: Refactor prefix for '3x3' message to be dry
 - ⚠ US4
   - ⚠ Mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*
 
 ## Legend
 
 - ⚠ TODO
-- IN PROGRESS
+- 🚧 IN PROGRESS
 - ✅ DONE
