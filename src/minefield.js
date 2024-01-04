@@ -110,6 +110,17 @@ class MineField {
         [1, 1],
         [1, 0],
       ];
+    } else if (rowIndex === 1 && colIndex === 1) {
+      return [
+        [0, 0],
+        [0, 1],
+        [0, 2],
+        [1, 0],
+        [1, 2],
+        [2, 0],
+        [2, 1],
+        [2, 2],
+      ];
     } else {
       return [
         [0, 0],

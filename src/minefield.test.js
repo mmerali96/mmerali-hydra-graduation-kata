@@ -236,6 +236,16 @@ describe('MineField game', () => {
         [1, 2],
         [0, 2],
       ]);
+      expect(new MineField().getListOfNeighboringSquares(1, 1)).toEqual([
+        [0, 0],
+        [0, 1],
+        [0, 2],
+        [1, 0],
+        [1, 2],
+        [2, 0],
+        [2, 1],
+        [2, 2],
+      ]);
     });
   });
 });

@@ -110,6 +110,7 @@
 
 - 🚧 US4
   - ✅ Create a function to mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*. Call the function clearBombs
+  - 🚧 TD4: Refactor postionOffset in calculateNeighboringBombs to be a global constant
   - 🚧 Create function get neighbors that gets the indices of valid adjacent squares
   - ⚠ Mark adjacent squares as cleared
   - ⚠ Calculate the neighboring squares bombs
