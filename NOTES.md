@@ -98,8 +98,23 @@
 # Pomodoro 12: 1/4/2023 255PM - 320PM
 
 - ✅ TD6: Refactor prefix for '3x3' message to be dry
-- ⚠ US4
-  - ⚠ Mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*
+- 🚧 US4
+  - 🚧 Create a function to mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*. Call the function clearBombs
+  - ⚠ Get the positions of valid adjacent squares
+  - ⚠ Mark adjacent squares as cleared
+  - ⚠ Calculate the neighboring squares bombs
+  - ⚠ create function checkBoardIsDiscovered which should signal that the game can be ended
+  - ⚠ After clearing all the bombs, find the next position to select
+
+# Pomodoro 12: 1/4/2023 325PM - 350PM
+
+- 🚧 US4
+  - ✅ Create a function to mark adjacent squares at random as bombs and indicate bombs that are not exploded as \*. Call the function clearBombs
+  - ⚠ Get the positions of valid adjacent squares
+  - ⚠ Mark adjacent squares as cleared
+  - ⚠ Calculate the neighboring squares bombs
+  - ⚠ create function checkBoardIsDiscovered which should signal that the game can be ended
+  - ⚠ After clearing all the bombs, find the next position to select
 
 ## Legend
 

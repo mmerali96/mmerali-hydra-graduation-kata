@@ -167,4 +167,54 @@ describe('MineField game', () => {
       logSpy.mockRestore();
     });
   });
+
+  describe('function clearBombs', () => {
+    it('should be defined', () => {
+      expect(new MineField().clearBombs).toBeDefined();
+    });
+    it('should take in a position as a parameter and mark the square with a "*" if it contains a bomb', () => {
+      const minefield = new MineField();
+      minefield.seedBombs('*********');
+      minefield.clearBombs(0, 0);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(0, 1);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(0, 2);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(1, 0);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(1, 1);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(1, 2);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(2, 0);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n|*| | |\n+-+-+-+');
+      minefield.clearBombs(2, 1);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*| |\n+-+-+-+');
+      minefield.clearBombs(2, 2);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+');
+    });
+    it('should mark clean squares as cleared with a "_', () => {
+      const minefield = new MineField();
+      minefield.seedBombs('         ');
+      minefield.clearBombs(0, 0);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(0, 1);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(0, 2);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(1, 0);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_| | |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(1, 1);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_| |\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(1, 2);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n| | | |\n+-+-+-+');
+      minefield.clearBombs(2, 0);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n|_| | |\n+-+-+-+');
+      minefield.clearBombs(2, 1);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_| |\n+-+-+-+');
+      minefield.clearBombs(2, 2);
+      expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+');
+    });
+  });
 });
