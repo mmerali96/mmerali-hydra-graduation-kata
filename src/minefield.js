@@ -1,5 +1,16 @@
 const crypto = require('crypto');
 
+const POSITION_OFFSET_LIST = [
+  [1, 0], // up
+  [1, 1], // up-right
+  [0, 1], // right
+  [-1, 1], // down-right
+  [-1, 0], // down
+  [-1, -1], // down-left
+  [0, -1], //left
+  [1, -1], // up-left
+];
+
 class MineField {
   constructor() {
     this.gameboard = [...Array(3)].map(() => Array(3).fill(' '));
@@ -67,18 +78,8 @@ class MineField {
 
   calculateNeighboringBombs(rowIndex, colIndex) {
     let bombCount = 0;
-    const postionOffset = [
-      [1, 0], // up
-      [1, 1], // up-right
-      [0, 1], // right
-      [-1, 1], // down-right
-      [-1, 0], // down
-      [-1, -1], // down-left
-      [0, -1], //left
-      [1, -1], // up-left
-    ];
 
-    for (const offset of postionOffset) {
+    for (const offset of POSITION_OFFSET_LIST) {
       const neighborRowIndex = rowIndex + offset[0];
       const neighborColIndex = colIndex + offset[1];
       if (neighborRowIndex >= 0 && neighborRowIndex < this.gameboard.length && neighborColIndex >= 0 && neighborColIndex < this.gameboard[0].length) {
