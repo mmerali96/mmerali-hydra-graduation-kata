@@ -223,7 +223,7 @@ describe('MineField game', () => {
       expect(new MineField().getListOfNeighboringSquares).toBeDefined();
     });
 
-    it('should return a list of neighboring squares that have not been discovered', () => {
+    it('should return a list of all neighboring squares when gameboard is initially created', () => {
       expect(new MineField().getListOfNeighboringSquares(0, 0)).toEqual(
         expect.arrayContaining([
           [0, 1],
@@ -248,6 +248,24 @@ describe('MineField game', () => {
           [1, 0],
           [1, 2],
           [2, 0],
+          [2, 1],
+          [2, 2],
+        ]),
+      );
+    });
+
+    it('should only return a list of neighboring squares when they have not been discovered', () => {
+      const minefield = new MineField();
+      minefield.gameboard = [
+        ['*', ' ', ' '],
+        ['*', ' ', ' '],
+        ['*', ' ', ' '],
+      ];
+      expect(minefield.getListOfNeighboringSquares(1, 1)).toEqual(
+        expect.arrayContaining([
+          [0, 1],
+          [0, 2],
+          [1, 2],
           [2, 1],
           [2, 2],
         ]),
