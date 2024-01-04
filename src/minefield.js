@@ -76,13 +76,17 @@ class MineField {
     }
   }
 
+  isValidIndex(rowIndex, colIndex) {
+    return rowIndex >= 0 && rowIndex < this.gameboard.length && colIndex >= 0 && colIndex < this.gameboard[0].length;
+  }
+
   calculateNeighboringBombs(rowIndex, colIndex) {
     let bombCount = 0;
 
     for (const offset of POSITION_OFFSET_LIST) {
       const neighborRowIndex = rowIndex + offset[0];
       const neighborColIndex = colIndex + offset[1];
-      if (neighborRowIndex >= 0 && neighborRowIndex < this.gameboard.length && neighborColIndex >= 0 && neighborColIndex < this.gameboard[0].length) {
+      if (this.isValidIndex(neighborRowIndex, neighborColIndex)) {
         if (this.bombBoard[neighborRowIndex][neighborColIndex] === '*') {
           bombCount += 1;
         }
