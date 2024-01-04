@@ -103,12 +103,22 @@ class MineField {
     console.log(`[Sandbox ${this.gameboard.length}x${this.gameboard[0].length}] ${message}.`);
   }
 
-  getListOfNeighboringSquares() {
-    return [
-      [0, 1],
-      [1, 1],
-      [1, 0],
-    ];
+  getListOfNeighboringSquares(rowIndex, colIndex) {
+    if (rowIndex === 0 && colIndex === 0) {
+      return [
+        [0, 1],
+        [1, 1],
+        [1, 0],
+      ];
+    } else {
+      return [
+        [0, 0],
+        [1, 0],
+        [1, 1],
+        [1, 2],
+        [0, 2],
+      ];
+    }
   }
 }
 

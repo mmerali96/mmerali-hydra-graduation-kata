@@ -229,6 +229,13 @@ describe('MineField game', () => {
         [1, 1],
         [1, 0],
       ]);
+      expect(new MineField().getListOfNeighboringSquares(0, 1)).toEqual([
+        [0, 0],
+        [1, 0],
+        [1, 1],
+        [1, 2],
+        [0, 2],
+      ]);
     });
   });
 });
