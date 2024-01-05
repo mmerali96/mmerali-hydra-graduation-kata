@@ -44,16 +44,40 @@ class MineField {
     this.seedBombs(seed);
     this.printGameboard();
     this.printMessage(`Game created`);
-    const currentPosition = this.getStartingLocation();
-    let playGame = true;
-    while (playGame) {
-      playGame = this.handleStepOnSquare(currentPosition[0], currentPosition[1]);
+
+    let currentPosition = this.getStartingLocation();
+    while (!this.checkIfBoardIsDiscovered() && currentPosition.length !== 0) {
+      this.handleStepOnSquare(currentPosition[0], currentPosition[1]);
       const neighborIndexList = this.getListOfNeighboringSquares(currentPosition[0], currentPosition[1]);
       for (const index of neighborIndexList) {
         this.clearSquare(index[0], index[1]);
       }
-      break;
+      currentPosition = this.selectNextPosition();
     }
+  }
+
+  getUndiscoveredSquares() {
+    let emptySquareIndexList = [];
+    for (let i = 0; i < this.gameboard.length; i++) {
+      for (let j = 0; j < this.gameboard[0].length; j++) {
+        if (this.gameboard[i][j] === ' ') {
+          emptySquareIndexList.push([i, j]);
+        }
+      }
+    }
+    return emptySquareIndexList;
+  }
+
+  selectNextPosition() {
+    let emptySquareIndexList = this.getUndiscoveredSquares();
+
+    if (emptySquareIndexList.length === 0) {
+      return [];
+    }
+
+    const randomItemIndex = Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * emptySquareIndexList.length);
+
+    return emptySquareIndexList[randomItemIndex];
   }
 
   handleStepOnSquare(rowIndex, colIndex) {

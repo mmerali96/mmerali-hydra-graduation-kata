@@ -128,6 +128,21 @@
   - ⚠ After clearing all the bombs, find the next position to select
   - clearSquare function should print a message saying Square flagged as bomb after clearing it
 
+# Pomodoro 13: 1/4/2023 1040AM - 1105AM
+
+- 🚧 US4
+
+  - 🚧 After clearing all the bombs, find the next position to select
+  - clearSquare function should print a message saying Square flagged as bomb after clearing it
+
+  # Pomodoro 14: 1/4/2023 1110AM - 1135AM
+
+- 🚧 US4
+  - 🚧 After clearing all the bombs, find the next position to select
+    - ✅ build a list of all empty squares and return one at random
+    - 🚧 refactor selectNextPosition to reduce complexity
+  - clearSquare function should print a message saying Square flagged as bomb after clearing it
+
 ## Legend
 
 - ⚠ TODO

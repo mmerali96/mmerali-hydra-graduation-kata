@@ -88,7 +88,7 @@ describe('MineField game', () => {
 
       minefield.startGame('*********');
 
-      expect(logSpy).toHaveBeenCalledTimes(4);
+      expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
       expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created.');
       expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] BOOM! - Game Over.');
@@ -102,7 +102,7 @@ describe('MineField game', () => {
 
       minefield.startGame('         ');
 
-      expect(logSpy).toHaveBeenCalledTimes(4);
+      expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toHaveBeenNthCalledWith(1, '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
       expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Game created.');
       expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] 0 bombs around your square.');
@@ -296,6 +296,49 @@ describe('MineField game', () => {
         ['_', '_', '_'],
       ];
       expect(minefield.checkIfBoardIsDiscovered()).toBe(true);
+    });
+  });
+
+  describe('selectNextPosition', () => {
+    it('should be defined', () => {
+      expect(new MineField().selectNextPosition).toBeDefined();
+    });
+
+    it('should randomly select an adjacent undiscovered square and return the position', () => {
+      const minefield = new MineField();
+      minefield.gameboard = [
+        ['2', '*', ' '],
+        ['_', ' ', ' '],
+        [' ', ' ', ' '],
+      ];
+      expect([
+        [2, 0],
+        [2, 1],
+        [2, 2],
+        [0, 2],
+        [1, 2],
+        [1, 1],
+      ]).toContainEqual(minefield.selectNextPosition());
+
+      minefield.gameboard = [
+        ['2', '*', ' '],
+        ['_', '*', ' '],
+        [' ', ' ', ' '],
+      ];
+      expect([
+        [2, 0],
+        [2, 1],
+        [2, 2],
+        [0, 2],
+        [1, 2],
+      ]).toContainEqual(minefield.selectNextPosition());
+
+      minefield.gameboard = [
+        ['2', '*', '2'],
+        ['_', '*', '2'],
+        ['1', '1', '1'],
+      ];
+      expect([]).toEqual(minefield.selectNextPosition());
     });
   });
 });
