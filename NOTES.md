@@ -147,8 +147,8 @@
 
   # Pomodoro 15: 1/5/2023 1140AM - 1205AM
 
-- ⚠ TD7: add validation to seedBombs function
-- ⚠ TD8: refactor getting starting location and select next position to use a common function for generating random index
+- ✅ TD7: add validation to seedBombs function
+- ✅ TD8: refactor getting starting location and select next position to use a common function for generating random index
 - 🚧 US4
   - ⚠ Print victory message "the land is cleared! GOOD JOB!" if all squares are cleared
 

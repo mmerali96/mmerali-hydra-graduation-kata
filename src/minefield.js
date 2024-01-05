@@ -31,8 +31,8 @@ class MineField {
   }
 
   getStartingLocation() {
-    const randomRowIndex = Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * this.gameboard.length);
-    const randomColIndex = Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * this.gameboard[0].length);
+    const randomRowIndex = this.calculateRandomIndex(this.gameboard);
+    const randomColIndex = this.calculateRandomIndex(this.gameboard[0]);
     return [randomRowIndex, randomColIndex];
   }
 
@@ -68,6 +68,10 @@ class MineField {
     return emptySquareIndexList;
   }
 
+  calculateRandomIndex(list) {
+    return Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * list.length);
+  }
+
   selectNextPosition() {
     let emptySquareIndexList = this.getUndiscoveredSquares();
 
@@ -75,7 +79,7 @@ class MineField {
       return [];
     }
 
-    const randomItemIndex = Math.floor((Number(crypto.randomBytes(1)[0]) / 256) * emptySquareIndexList.length);
+    const randomItemIndex = this.calculateRandomIndex(emptySquareIndexList);
 
     return emptySquareIndexList[randomItemIndex];
   }
