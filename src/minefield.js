@@ -128,6 +128,7 @@ class MineField {
     } else {
       this.gameboard[rowIndex][colIndex] = '_';
     }
+    this.printMessage('Square flagged as bomb');
   }
 
   printMessage(message) {
