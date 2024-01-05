@@ -152,6 +152,12 @@
 - 🚧 US4
   - ⚠ Print victory message "the land is cleared! GOOD JOB!" if all squares are cleared
 
+# Pomodoro 16: 1/5/2023 1140AM - 1205AM
+
+- ✅ US4
+  - ✅ Print gameboard each time a square is cleared
+  - ✅ Print victory message "the land is cleared! GOOD JOB!" if all squares are cleared
+
 ## Legend
 
 - ⚠ TODO

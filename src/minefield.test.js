@@ -61,7 +61,7 @@ describe('MineField game', () => {
       expect(new MineField().startGame).toBeDefined();
     });
 
-    it('should use the default seed to populate the bombboard if the seed is not provided', () => {
+    it('should use the default seed to populate the bomboard if the seed is not provided', () => {
       const minefield = new MineField();
       minefield.startGame();
       expect(minefield.bombBoard).toEqual([
@@ -108,6 +108,14 @@ describe('MineField game', () => {
       expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] 0 bombs around your square.');
 
       logSpy.mockRestore();
+    });
+
+    it('should start the game and fill in the board until the bot wins', () => {
+      const logSpy = jest.spyOn(console, 'log');
+      const minefield = new MineField();
+      minefield.startGame('         ');
+      expect(logSpy).toHaveBeenNthCalledWith(21, minefield.getGameboard());
+      expect(logSpy).toHaveBeenNthCalledWith(22, '[Sandbox 3x3] the land is cleared! GOOD JOB.');
     });
   });
 
@@ -194,39 +202,39 @@ describe('MineField game', () => {
 
       minefield.clearSquare(0, 0);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(1, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(0, 1);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(0, 2);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(3, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(6, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(1, 0);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*| | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(8, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(1, 1);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*| |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(5, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(10, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(1, 2);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(6, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(12, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(2, 0);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n|*| | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(7, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(14, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(2, 1);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*| |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(8, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(16, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(2, 2);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+\n|*|*|*|\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(9, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(18, '[Sandbox 3x3] Square flagged as bomb.');
     });
 
     it('should mark clean squares as cleared with a "_', () => {
@@ -236,39 +244,39 @@ describe('MineField game', () => {
 
       minefield.clearSquare(0, 0);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_| | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(1, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(0, 1);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_| |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(2, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(0, 2);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(3, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(6, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(1, 0);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_| | |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(4, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(8, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(1, 1);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_| |\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(5, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(10, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(1, 2);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n| | | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(6, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(12, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(2, 0);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n|_| | |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(7, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(14, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(2, 1);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_| |\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(8, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(16, '[Sandbox 3x3] Square flagged as bomb.');
 
       minefield.clearSquare(2, 2);
       expect(minefield.getGameboard()).toBe('+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n|_|_|_|\n+-+-+-+');
-      expect(logSpy).toHaveBeenNthCalledWith(9, '[Sandbox 3x3] Square flagged as bomb.');
+      expect(logSpy).toHaveBeenNthCalledWith(18, '[Sandbox 3x3] Square flagged as bomb.');
     });
   });
 

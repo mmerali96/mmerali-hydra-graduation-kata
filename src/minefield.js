@@ -40,19 +40,38 @@ class MineField {
     console.log(this.getGameboard());
   }
 
-  startGame(seed = '*   *   *') {
+  createGame(seed) {
     this.seedBombs(seed);
     this.printGameboard();
     this.printMessage(`Game created`);
+  }
+
+  startGame(seed = '*   *   *') {
+    this.createGame(seed);
 
     let currentPosition = this.getStartingLocation();
     while (!this.checkIfBoardIsDiscovered() && currentPosition.length !== 0) {
-      this.handleStepOnSquare(currentPosition[0], currentPosition[1]);
-      const neighborIndexList = this.getListOfNeighboringSquares(currentPosition[0], currentPosition[1]);
-      for (const index of neighborIndexList) {
-        this.clearSquare(index[0], index[1]);
+      if (!this.handleStepOnSquare(currentPosition[0], currentPosition[1])) {
+        break;
       }
+      this.clearAdjacentNeighbors(currentPosition);
       currentPosition = this.selectNextPosition();
+    }
+
+    this.isGameWon();
+  }
+
+  clearAdjacentNeighbors(currentPosition) {
+    const neighborIndexList = this.getListOfNeighboringSquares(currentPosition[0], currentPosition[1]);
+    for (const index of neighborIndexList) {
+      this.clearSquare(index[0], index[1]);
+    }
+  }
+
+  isGameWon() {
+    if (this.checkIfBoardIsDiscovered()) {
+      this.printGameboard();
+      this.printMessage('the land is cleared! GOOD JOB');
     }
   }
 
@@ -147,6 +166,7 @@ class MineField {
     } else {
       this.gameboard[rowIndex][colIndex] = '_';
     }
+    this.printGameboard();
     this.printMessage('Square flagged as bomb');
   }
 
