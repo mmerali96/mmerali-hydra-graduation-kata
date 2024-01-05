@@ -95,7 +95,22 @@ class MineField {
     }
   }
 
+  validateSeedStringLength(seedString) {
+    if (seedString.length !== this.gameboard.length * this.gameboard[0].length) {
+      throw new Error('Error: seed string must equal size of gameboard');
+    }
+  }
+
+  validateSeedStringCharacters(seedString) {
+    if (/[^ *\s]/.test(seedString)) {
+      throw new Error('Error: seed string can only contain " " or "*"');
+    }
+  }
+
   seedBombs(seedString = '*   *   *') {
+    this.validateSeedStringLength(seedString);
+    this.validateSeedStringCharacters(seedString);
+
     const seedArray = seedString.split('');
     for (let i = 0; i < this.bombBoard.length; i++) {
       for (let j = 0; j < this.bombBoard[0].length; j++) {

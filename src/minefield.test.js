@@ -134,6 +134,20 @@ describe('MineField game', () => {
       field.seedBombs('* **   * ');
       expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(4);
     });
+
+    it('seedBombs should only accept strings that equal the size of the gameboard', () => {
+      let field = new MineField();
+      expect(() => field.seedBombs('          ')).toThrow(new Error('Error: seed string must equal size of gameboard'));
+      expect(() => field.seedBombs('')).toThrow(new Error('Error: seed string must equal size of gameboard'));
+      expect(() => field.seedBombs('         ')).not.toThrow(new Error('Error: seed string must equal size of gameboard'));
+    });
+
+    it('seedBombs should not accept chars other than " " or "*', () => {
+      let field = new MineField();
+      expect(() => field.seedBombs('a1123##@$')).toThrow(new Error('Error: seed string can only contain " " or "*"'));
+      expect(() => field.seedBombs(' * * Y * ')).toThrow(new Error('Error: seed string can only contain " " or "*"'));
+      expect(() => field.seedBombs(' * * * * ')).not.toThrow(new Error('Error: seed string can only contain " " or "*"'));
+    });
   });
 
   describe('function calculateNeighboringBombs', () => {
