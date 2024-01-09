@@ -158,6 +158,10 @@
   - ✅ Print gameboard each time a square is cleared
   - ✅ Print victory message "the land is cleared! GOOD JOB!" if all squares are cleared
 
+# Pomodoro 17: 1/5/2023 1120AM - 1145AM
+
+- 🚧 TD9: make test names in describe and it consistent
+
 ## Legend
 
 - ⚠ TODO
