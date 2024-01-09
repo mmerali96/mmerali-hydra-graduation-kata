@@ -165,7 +165,8 @@
 
 # Pomodoro 18: 1/5/2023 1150AM - 1215PM
 
-- 🚧 TD9: make test names in describe and it consistent
+- ✅ TD9: make test names in describe and it consistent
+- ✅ Fix code smell Remove duplicates in this character class.
 
 ## Legend
 

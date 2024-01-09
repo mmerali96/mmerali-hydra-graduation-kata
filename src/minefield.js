@@ -125,7 +125,7 @@ class MineField {
   }
 
   validateSeedStringCharacters(seedString) {
-    if (/[^ *\s]/.test(seedString)) {
+    if (/[^*\s]/.test(seedString)) {
       throw new Error('Error: seed string can only contain " " or "*"');
     }
   }
