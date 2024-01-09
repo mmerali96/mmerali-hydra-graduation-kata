@@ -1,35 +1,34 @@
 const { MineField } = require('./minefield');
 const crypto = require('crypto');
 
-describe('MineField game', () => {
-  it('should be defined', () => {
+describe('Minefield', () => {
+  it('should exist', () => {
     expect(MineField).toBeDefined();
   });
-  it('should contain gameboard array which initially a size of 3x3 and empty', () => {
+  it('should create an empty 3x3 gameboard on start', () => {
     expect(new MineField().gameboard).toEqual([...Array(3)].map(() => Array(3).fill(' ')));
   });
-  it('should have a function that returns the gameboard as a user readable string', () => {
+  it('should format the gameboard in a human readable format', () => {
     expect(new MineField().getGameboard()).toBe('+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+');
   });
-  it('should have a helper function that prints the gameboard to the console', () => {
+  it('should display the gameboard in the console', () => {
     const logSpy = jest.spyOn(console, 'log');
     expect(new MineField().printGameboard).toBeDefined();
     new MineField().printGameboard();
     expect(logSpy).toHaveBeenCalled();
-
     logSpy.mockRestore();
   });
 
-  describe('function getStartingLocation', () => {
-    it('should be defined', () => {
+  describe('Starting location', () => {
+    it('Operation should exist', () => {
       expect(new MineField().getStartingLocation).toBeDefined();
     });
 
-    it('should return the starting position as an array of 2 indices', () => {
+    it('Should return the starting position as a pair of (x,y) coordinates', () => {
       expect(new MineField().getStartingLocation()).toEqual(expect.arrayContaining([expect.any(Number), expect.any(Number)]));
     });
 
-    it('should use the random function to generate the starting position', () => {
+    it('Should randomly generate the starting position', () => {
       const mockMathRandom = jest.spyOn(crypto, 'randomBytes');
       new MineField().getStartingLocation();
       expect(mockMathRandom).toHaveBeenCalled();
@@ -37,18 +36,19 @@ describe('MineField game', () => {
     });
   });
 
-  describe('function handleStepOnSquare', () => {
-    it('should be defined', () => {
+  describe('Stepping on a square', () => {
+    it('Operation should exist', () => {
       expect(new MineField().handleStepOnSquare).toBeDefined();
     });
 
-    it('when on a square with a bomb, should mark the gameboard with an "X" and return false', () => {
+    it('When selecting a square that contains a bomb, it should mark the gameboard with an "X"', () => {
       const minefield = new MineField();
       minefield.seedBombs();
       expect(minefield.handleStepOnSquare(0, 0)).toBe(false);
       expect(minefield.gameboard[0][0]).toBe('X');
     });
-    it('when on a clean square, should return true and mark the square with the number of bombs around it', () => {
+
+    it('When selecting a clean square, it should mark the square with the amount of adjacent bombs squares', () => {
       const minefield = new MineField();
       minefield.seedBombs();
       expect(minefield.handleStepOnSquare(1, 0)).toBe(true);
@@ -56,12 +56,12 @@ describe('MineField game', () => {
     });
   });
 
-  describe('should have a function called startGame', () => {
-    it('should be defined', () => {
+  describe('Start game', () => {
+    it('Operation should exist', () => {
       expect(new MineField().startGame).toBeDefined();
     });
 
-    it('should use the default seed to populate the bomboard if the seed is not provided', () => {
+    it('Should default the gameboard to "+-+-+-+\n|*| | |\n+-+-+-+\n| |*| |\n+-+-+-+\n| | |*|\n+-+-+-+"', () => {
       const minefield = new MineField();
       minefield.startGame();
       expect(minefield.bombBoard).toEqual([
@@ -71,7 +71,7 @@ describe('MineField game', () => {
       ]);
     });
 
-    it('should print the game board and starting message', () => {
+    it('Should show the game board and starting message in the console', () => {
       const logSpy = jest.spyOn(console, 'log');
       const minefield = new MineField();
       minefield.startGame('         ');
@@ -82,7 +82,7 @@ describe('MineField game', () => {
       logSpy.mockRestore();
     });
 
-    it('On game start, bot will select a bomb square and the game will output "BOOM! - Game Over."', () => {
+    it('When bot selects a square that contains a bomb, should output "BOOM! - Game Over."', () => {
       const logSpy = jest.spyOn(console, 'log');
       const minefield = new MineField();
 
@@ -96,7 +96,7 @@ describe('MineField game', () => {
       logSpy.mockRestore();
     });
 
-    it('should print gameboard with number of neighboring bombs when bot selects clean square', () => {
+    it('When bot selects a clean square, should display gameboard with number of neighboring bombs in console', () => {
       const logSpy = jest.spyOn(console, 'log');
       const minefield = new MineField();
 
@@ -110,7 +110,7 @@ describe('MineField game', () => {
       logSpy.mockRestore();
     });
 
-    it('should start the game and fill in the board until the bot wins', () => {
+    it('should start the game and continue to play until board is filled. Then, display a message indicating that the bot wins', () => {
       const logSpy = jest.spyOn(console, 'log');
       const minefield = new MineField();
       minefield.startGame('         ');
@@ -119,38 +119,36 @@ describe('MineField game', () => {
     });
   });
 
-  describe('should hold an internal state of where bombs are on the gameboard', () => {
-    it('should have 2d array bombBoard defined', () => {
+  describe('Track squares with bombs', () => {
+    it('should keep track of all the squares that contain bombs', () => {
       expect(new MineField().bombBoard).toBeDefined();
-    });
-    it('should be initialized to a 3x3 array', () => {
       expect(new MineField().bombBoard).toEqual([...Array(3)].map(() => Array(3).fill(' ')));
     });
 
-    it('should have function seedBombs that adds bombs to the bomb board', () => {
+    it('operation to generate location of squares containing bombs should exist', () => {
       expect(new MineField().seedBombs).toBeDefined();
     });
 
-    it('should randomly define squares with bombs in internal map', () => {
+    it('should randomly generate location of squares containing bombs', () => {
       let field = new MineField();
       field.seedBombs();
       expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(3);
     });
 
-    it('should take 9 char string "* **     " and populate the gameboard accordingly', () => {
+    it('should take a seed value "* **     " and create the gameboard with 4 bomb squares', () => {
       let field = new MineField();
       field.seedBombs('* **   * ');
       expect(field.bombBoard.flat().filter((item) => item === '*').length).toBe(4);
     });
 
-    it('seedBombs should only accept strings that equal the size of the gameboard', () => {
+    it('should only accept strings that equal the size of the gameboard', () => {
       let field = new MineField();
       expect(() => field.seedBombs('          ')).toThrow(new Error('Error: seed string must equal size of gameboard'));
       expect(() => field.seedBombs('')).toThrow(new Error('Error: seed string must equal size of gameboard'));
       expect(() => field.seedBombs('         ')).not.toThrow(new Error('Error: seed string must equal size of gameboard'));
     });
 
-    it('seedBombs should not accept chars other than " " or "*', () => {
+    it('should not accept chars other than " " or "*', () => {
       let field = new MineField();
       expect(() => field.seedBombs('a1123##@$')).toThrow(new Error('Error: seed string can only contain " " or "*"'));
       expect(() => field.seedBombs(' * * Y * ')).toThrow(new Error('Error: seed string can only contain " " or "*"'));
@@ -158,12 +156,12 @@ describe('MineField game', () => {
     });
   });
 
-  describe('function calculateNeighboringBombs', () => {
-    it('should be defined', () => {
+  describe('Calculate adjacent bombs', () => {
+    it('Operation should exist', () => {
       expect(new MineField().calculateNeighboringBombs).toBeDefined();
     });
 
-    it('should return the number of bombs around a square', () => {
+    it('Should return the number of bombs around a square', () => {
       const minefield = new MineField();
       minefield.seedBombs();
       expect(minefield.calculateNeighboringBombs(0, 1)).toBe(2);
@@ -175,12 +173,12 @@ describe('MineField game', () => {
     });
   });
 
-  describe('function printMessage', () => {
-    it('should be defined', () => {
+  describe('Print message to console', () => {
+    it('Operation exists', () => {
       expect(new MineField().printMessage).toBeDefined();
     });
 
-    it('should prefix messages with the gameboard size', () => {
+    it('Should prefix message with the gameboard size', () => {
       const logSpy = jest.spyOn(console, 'log');
       new MineField().startGame();
 
@@ -190,11 +188,11 @@ describe('MineField game', () => {
     });
   });
 
-  describe('function clearBombs', () => {
-    it('should be defined', () => {
+  describe('Clear  bombs', () => {
+    it('Operation should exist', () => {
       expect(new MineField().clearSquare).toBeDefined();
     });
-    it('should take in a position as a parameter and mark the square with a "*" if it contains a bomb', () => {
+    it('When given the position of a square, should mark the square with a "*" if it contains a bomb', () => {
       const logSpy = jest.spyOn(console, 'log');
 
       const minefield = new MineField();
@@ -237,7 +235,7 @@ describe('MineField game', () => {
       expect(logSpy).toHaveBeenNthCalledWith(18, '[Sandbox 3x3] Square flagged as bomb.');
     });
 
-    it('should mark clean squares as cleared with a "_', () => {
+    it('When given the position of a square, should mark the square with a "_" if it does not contain a bomb', () => {
       const logSpy = jest.spyOn(console, 'log');
       const minefield = new MineField();
       minefield.seedBombs('         ');
@@ -280,12 +278,12 @@ describe('MineField game', () => {
     });
   });
 
-  describe('getListOfNeighboringSquares', () => {
-    it('should be defined', () => {
+  describe('List adjacent squares', () => {
+    it('Operation should exist', () => {
       expect(new MineField().getListOfNeighboringSquares).toBeDefined();
     });
 
-    it('should return a list of all neighboring squares when gameboard is initially created', () => {
+    it('When the gameboard is empty, should return a list of all adjacent squares', () => {
       expect(new MineField().getListOfNeighboringSquares(0, 0)).toEqual(
         expect.arrayContaining([
           [0, 1],
@@ -316,7 +314,7 @@ describe('MineField game', () => {
       );
     });
 
-    it('should only return a list of neighboring squares when they have not been discovered', () => {
+    it('When the gameboard is not empty, should return a list of empty adjacent squares', () => {
       const minefield = new MineField();
       minefield.gameboard = [
         ['*', ' ', ' '],
@@ -335,12 +333,12 @@ describe('MineField game', () => {
     });
   });
 
-  describe('checkBoardIsDiscovered', () => {
-    it('should be defined', () => {
+  describe('Gameboard is discovered', () => {
+    it('Operation should exist', () => {
       expect(new MineField().checkIfBoardIsDiscovered).toBeDefined();
     });
 
-    it('should return false if there are still undiscovered squares on the gameboard', () => {
+    it('When there are empty squares on the gameboard, should return false', () => {
       const minefield = new MineField();
       minefield.gameboard = [
         [' ', '2', ' '],
@@ -350,7 +348,7 @@ describe('MineField game', () => {
       expect(minefield.checkIfBoardIsDiscovered()).toBe(false);
     });
 
-    it('should return true if there are no undiscovered squares on the gameboard', () => {
+    it('When there are no empty squares on the gameboard, should return true', () => {
       const minefield = new MineField();
       minefield.gameboard = [
         ['*', '2', '*'],
@@ -361,12 +359,12 @@ describe('MineField game', () => {
     });
   });
 
-  describe('selectNextPosition', () => {
-    it('should be defined', () => {
+  describe('Select next position', () => {
+    it('Operation should exist', () => {
       expect(new MineField().selectNextPosition).toBeDefined();
     });
 
-    it('should randomly select an adjacent undiscovered square and return the position', () => {
+    it('Should return the position of a randomly selected adjacent empty square', () => {
       const minefield = new MineField();
       minefield.gameboard = [
         ['2', '*', ' '],

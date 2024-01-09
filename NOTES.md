@@ -161,6 +161,10 @@
 # Pomodoro 17: 1/5/2023 1120AM - 1145AM
 
 - ✅ formatting backlog for consistency
+- ✅ TD9: make test names in describe and it consistent
+
+# Pomodoro 18: 1/5/2023 1150AM - 1215PM
+
 - 🚧 TD9: make test names in describe and it consistent
 
 ## Legend
